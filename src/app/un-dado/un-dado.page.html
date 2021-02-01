@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="texto">Los retos del dado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <br><br>
+  <ion-card color="dark">
+
+    <ion-card-content color="dark">
+
+      <div class="centrado">
+        <ion-item color="warning">
+          <ion-label>Selecciona una lista de retos </ion-label>
+          <ion-select color="danger" [(ngModel)]="itemRetos" (ionChange)=" seleccionarLista()" cancelText="Cancelar"
+            interface="action-sheet">
+            <ion-select-option *ngFor="let item of listaDeRetos" [value]='item.arrayRetos'>{{item.nombre}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <br><br>
+        <div *ngIf="crearLista">
+          <h2 class="texto">Nueva lista</h2>
+          <h4 class="texto">6 retos</h4>
+          <ion-item color="dark">
+            <ion-label position='floating' class="texto">Ingresa un reto</ion-label>
+            <ion-input class="texto" [(ngModel)]="reto"></ion-input>
+          </ion-item>
+          <ion-item color="dark">
+            <ion-text color="secondary" slot="end" (click)="agregarReto()"> Agregar</ion-text>
+            <ion-text slot="end" (click)="finalizarLista()"> Finalizar</ion-text>
+          </ion-item>
+
+
+        </div>
+
+        <div *ngIf="arrayRetos">
+          <div *ngFor="let item of arrayRetos" color="dark">
+            <ion-item color="dark">
+              <ion-text class="texto">{{item}}</ion-text>
+            </ion-item>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="existeListaRetos">
+        <div *ngFor="let item of itemRetos" color="dark">
+          <ion-item color="dark">
+            <ion-text class="texto">{{item}}</ion-text>
+          </ion-item>
+        </div>
+        <ion-item color="dark">
+          <ion-text color="secondary" slot="end" (click)="jugar()"> Jugar</ion-text>
+          <ion-text slot="end" (click)="finalizarLista()"> Cancelar</ion-text>
+        </ion-item>
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="warning" (click)=" nuevaLista()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+</ion-content>

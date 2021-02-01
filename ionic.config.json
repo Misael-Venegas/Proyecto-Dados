@@ -1,5 +1,7 @@
 {
   "name": "dados",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
